@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>var</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Variables</h1>
+<p>Open the console</p>
+<script type="text/javascript">
+
+/**
+ * ch02-01-variables-1.html
+ * var case
+ */
+
+// 할당 없이 선언
+var i1;
+console.log(i1);
+
+
+// 선언 및 값 할당
+var i2 = 10;
+console.log(i2);
+
+// 값 할당 (변경)
+i2 = 20;
+console.log(i2);
+
+// 변수 재선언
+var i2 = 30;
+console.log(i2);
+
+
+// var 없이 선언
+i3 = 40;
+console.log(i3);
+
+// 변수 재선언
+var i3 = 50;
+console.log(i3);
+
+
+// 블록 안에서 선언
+if (true) {
+    var i4 = 60;
+}
+
+// 블록 밖에서 참조
+console.log(i4);
+
+</script>
+</body>
+</html>

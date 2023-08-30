@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>function</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>function</h1>
+<p>Open the console</p>
+<script type="text/javascript">
+
+/**
+ * ch02-03-func-2.html
+ * 실습: 함수의 호이스팅 확인
+ * 함수 선언문, 함수 표현식, 화살표 함수
+ */
+
+// func4~func6: 함수 호이스팅 확인
+
+// func4("Hello, func4");   // func4: 함수 선언문
+// func5("Hello, func5");   // func5: 함수 표현식
+// func6("Hello, func6");   // func6: 화살표 함수
+
+function func4(str){
+    console.log(str);
+}
+
+const func5 = function(str){
+    console.log(str);
+}
+
+const func6 = (str) => {
+    console.log(str);
+}
+
+</script>
+</body>
+</html>

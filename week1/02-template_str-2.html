@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>template string</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Template String</h1>
+<p>Open the console</p>
+<script type="text/javascript">
+
+/**
+ * ch02-02-template_string-2.html
+ */
+
+let i1 = 10;
+let i2 = 20;
+let i3 = 30;
+
+// 10 + 20 + 30 = 60
+// 10, 20, 30을 모두 더하면 60입니다.
+
+// 템플릿 문자열 활용
+console.log(`${i1} + ${i2} + ${i3} = ${i1+i2+i3}`);
+console.log(`${i1}, ${i2}, ${i3}을 모두 더하면 ${i1+i2+i3}입니다.`);
+</script>
+</body>
+</html>
