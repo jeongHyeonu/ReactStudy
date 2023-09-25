@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>What It Means to Be Functional</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>ch03-01-05-1-functional.html</h1>
+
+<script type="module">
+ 
+/**
+ * ex08-1: ch03/ex/ex08-1.html
+ * ref: ch03/01/05-1-functional.html
+ */
+
+const insideFn = logger => logger("함수를 다른 함수에 매개변수로 전달");
+
+insideFn(message => console.log(message));
+
+</script>
+</body>
+</html>

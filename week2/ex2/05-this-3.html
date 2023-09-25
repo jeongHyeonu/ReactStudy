@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>object and this</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Arrow Functions</h1>
+<p>Open the console</p>
+
+<!-- 여러 파일로 쪼개서 한 웹 어플리케이션을 만들때, module, babel -->
+<!-- module, babel은 실행 결과가 같음, (this=undefined) -->
+<!-- <script type="module"> -->
+<!-- <script type="text/babel"> -->
+
+<!-- javascript, script은 실행 결과가 같음, (this=window) -->
+<!-- <script type="text/javascript"> -->
+<!-- <script> -->
+
+<!-- 이때, 윈도우 커맨드에서 실행하는 this도 다름, 이건 다음 시간에.. -->
+
+<script type="module">
+
+/* 05-this-3.html */
+// script type: module, text/babel, text/javascript, 생략
+
+console.log(this);                  // this === undefined
+
+const obj = {
+  obj_this: 'str1',                 
+
+  // 메서드 func1() 정의, 함수 선언문
+  func1(){
+    console.log('함수 선언문 func1():');
+    console.log(this);              // this === obj
+
+    const funcFunc1 = function(){ 
+      console.log('함수 표현식: ', this);     // this === undefined
+    };
+    funcFunc1();
+
+    const funcFunc2 = () => {
+      console.log('화살표 함수: ', this);     // this === obj
+    };
+    funcFunc2();
+
+    const funcFunc3 = function(){
+      console.log('함수 표현식 + 바인딩: ', this);      // this === obj
+    }.bind(obj);
+    funcFunc3();    
+
+    setTimeout(function(){
+      console.log('setTimeout(함수 선언문):', this);  // this === Window
+    }, 0);
+
+    setTimeout(() => {
+      console.log('setTimeout(화살표 함수):', this);  // this === obj
+    }, 0);
+  },  
+
+  // 메서드 func2() 정의, 화살표 함수
+  func2: () => {
+    console.log('화살표 함수 func2():');
+    console.log(this);              // this === undefined
+    
+    const funcFunc1 = function(){
+      console.log('함수 표현식: ', this);   // this === undefined
+    };
+    funcFunc1();
+
+    const funcFunc2 = () => {
+      console.log('화살표 함수: ', this);   // this === undefined
+    };
+    funcFunc2();
+
+    const funcFunc3 = function(){
+      console.log('함수 표현식 + 바인딩: ', this);  // this === obj
+    }.bind(obj);
+    funcFunc3();    
+    
+    setTimeout(function(){
+      console.log('setTimeout(함수 선언문):', this);  // this === Window
+    }, 0);
+
+    setTimeout(() => {
+      console.log('setTimeout(화살표 함수):', this);  // this === undefined
+    }, 0);
+  },  
+};
+
+obj.func1();
+obj.func2();
+
+</script>
+</body>
+</html>

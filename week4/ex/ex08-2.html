@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>What It Means to Be Functional</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>ch03-01-05-1-functional.html</h1>
+
+<script type="module">
+ 
+/**
+ * ex08-2: ch03/ex/ex08-2.html
+ * ref: ch03/01/05-1-functional.html
+ */
+
+const insideFn = (logger) => {
+    logger("함수를 다른 함수에 매개변수로 전달");
+};
+
+const temp = (msg) => {
+    console.log(msg);
+};
+
+// Q. 아래 두 코드의 차이는? 
+// 첫번째껀 temp라는 함수를 매개변수로 실행
+// 두번째껀 insideFn 실행 전에 temp("AA")에서 반환받은 값을 매개변수로 실행
+insideFn(temp);
+insideFn(temp("AA"));
+
+</script>
+</body>
+</html>

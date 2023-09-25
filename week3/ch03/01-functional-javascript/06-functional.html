@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>What It Means to Be Functional</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Functional JavaScript</h1>
+<p>Open the console</p>
+<script type="text/babel">
+
+/* ch03/01/06-functional.html */
+
+var createScream_06 = function(logger) {
+    return function(message) {
+        logger(message.toUpperCase() + "!!!")
+    }
+}
+
+const scream_06 = createScream_06(message => console.log(message))
+scream_06('createScream_06: createScream은 함수를 반환')
+
+
+// createScream_01: createScream_06 함수를 화살표 함수로 변환
+const createScream_01 = (logger) => {  
+    return (message) => {
+        logger(message.toUpperCase() + "!!!")
+    }
+}
+
+const scream_01 = createScream_01(message => console.log(message))
+scream_01('createScream_01: 함수가 함수를 반환')
+
+
+// createScream_02: createScream_01에서 1줄짜리 함수는 {}와 return 생략
+const createScream_02 = (logger) =>   
+    (message) => {
+        logger(message.toUpperCase() + "!!!")
+    }
+
+const scream_02 = createScream_02(message => console.log(message))
+scream_02('createScream_02: 함수가 함수를 반환')
+
+
+// createScream_03: createScream_02의 함수 리턴에서 1줄짜리 함수는 {} 생략
+const createScream_03 = (logger) => (message) => logger(message.toUpperCase() + "!!!")
+
+const scream_03 = createScream_03(message => console.log(message))
+scream_03('createScream_03: 함수가 함수를 반환')
+
+
+// createScream_04: createScream_03에서 매개변수가 1개 이면 ()도 생략
+// ch03-01-07-functional.html 코드와 동일
+const createScream_04 = logger => message => logger(message.toUpperCase() + "!!!")
+
+const scream_04 = createScream_04(message => console.log(message))
+scream_04('createScream_04: 함수가 함수를 반환')
+
+
+/* ch03-01-07-functional.html */
+const createScream_07 = logger => message => 
+    logger(message.toUpperCase() + "!!!")
+
+const scream_07 = createScream_07(message => console.log(message))
+scream_07('createScream_07: 함수가 함수를 반환')
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>What It Means to Be Functional</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>ch03-01-06-functional.html</h1>
+
+<script type="module">
+ 
+/**
+ * ex09: ch03/ex/ex09.html
+ * ref: ch03/01/06-functional.html
+ */
+
+const createScream = function(logger) {
+    return function(message) {
+        logger(message.toUpperCase() + "!!!");
+    }
+}
+
+const scream = createScream(message => console.log(message));
+scream('function can return other functions');
+
+</script>
+</body>
+</html>

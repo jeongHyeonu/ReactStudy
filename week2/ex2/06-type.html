@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>06-type</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>06-type</h1>
+<p>Open the console</p>
+<!-- module 인 경우 Uncaught ReferenceError ReferenceError: a is not defined
+    at <anonymous> (e:\ReactStudy\ReactStudy\week2\ex2\06-type.html:25:3) -->
+<!-- text/babel 인 경우 Uncaught ReferenceError ReferenceError: a is not defined
+    at <anonymous> (<eval>/VM46947589:12:3)-->
+
+<!-- text/javascript나 생략인 경우엔 정상적으로 5 리턴해줌. -->
+
+<script type="text/javascript">
+
+/* 
+ * 1. module
+ * 2. text/babel
+ * 3. text/javascript
+ * 4. 생략
+ */
+
+/* 06-type.html */
+
+
+// module이나 babel은 var나 let을 통해 변수 선언을 꼭 해줘야 함! 안그러면 undefined
+a=5;
+
+console.log(a);
+
+console.log(this);
+
+console.log(b);
+
+// var는 호이스팅 가능, let은 호이스팅 안됨! ( 단, babel의 경우, let은 호이스팅 되는 예외가 있다..?! )
+var b = 5;
+
+</script>
+</body>
+</html>

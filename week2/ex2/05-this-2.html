@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>object and this</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Arrow Functions</h1>
+<p>Open the console</p>
+<script type="module">
+
+/* 05-this-2.html */
+
+// 1. 전역 scope에서 this 값 확인
+console.log(...);
+
+// 2. obj 객체 생성
+const ... = {
+
+  // 3. 속성 obj_this에 'str1' 값 할당
+  obj_this: '...',
+
+  // 4. 메서드 func1() 정의
+  // func2: () => {
+
+    // 5. this가 참조하는 값 콘솔에 출력
+    console.log(...);
+    
+    // 6. 함수 표현식으로 5를 구현하는 함수 funcFunc1()를 구현하고 호출
+    const funcFunc1 = ...
+    funcFunc1();
+
+    // 7. 화살표 함수로 5를 구현하는 함수 funcFunc2()를 구현하고 호출
+    const funcFunc2 = ...
+    funcFunc2();
+
+    // 8. 함수 표현식으로 5를 구현하는 함수 funcFunc3()를 구현하되,
+    // obj을 바인딩하고, 호출
+    const funcFunc3 = ...
+    funcFunc3();    
+    
+    // 9. setTimeout()의 callback에서 this 값 확인
+    // callback은 함수 선언문으로 구현하고, timeout은 0으로 지정
+    setTimeout(..., 0);
+
+    // 10. setTimeout()의 callback에서 this 값 확인
+    // callback은 화살표 함수로 구현하고, timeout은 0으로 지정
+    setTimeout(..., 0);
+  },  
+};
+
+//11. obj의 메서드 func2() 호출
+...
+
+</script>
+</body>
+</html>
