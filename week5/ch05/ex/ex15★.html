@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Transforming Data</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Transforming Data</h1>
+<p>Open the Console</p>
+<script type="module">
+
+/**
+ * ch03/ex/ex15.html
+ * ref: ch03/06/09-data.html
+ */
+
+const ages = [20, 50, 60, 35, 70, 25, 45];
+console.log(ages);
+
+// 실습15: ages의 모든 요소를 탐색한 후 최대 값을 출력
+// Array.reduce(callback[, initialValue]) : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+
+// reduce 함수는 작년 시험 문제였음!! 기출이니깐 외워두자..! 많이 쓰니깐 걍 외워라!!★
+
+// Array.prototype.reduce(callback, initValue)
+// * callback :
+// (accumulator, currentValue, currentIndex, array) => { ... }
+// - accumulator: 콜백의 반환 값 누적 (mandatory)
+// - currentValue: 현재 처리할 요소 (mandatory)
+// - currentIndex: 현재 처리할 요소의 인덱스 (optional)
+// - array: reduce()를 호출한 배열 (optional)
+const maxAge = age.reduce((max,age,idx)=>{
+    console.log(`idx ${idx}: ${max} > ${age} = ${max>age}`);
+    return max > age ? max:age; // 여기서 반환된 값은 콜백에 있는 max 변수에 저장이 됨
+})
+console.log(`maxAge: ${maxAge}`);
+
+const maxFinder1 = arr => arr.reduce( (max, age, idx) => {
+console.log(`idx ${idx}: ${max} > ${age} = ${max>age}`);
+return max > age ? max : age;
+});
+console.log(`maxAge: ${maxFinder1(ages)}`);
+console.log(ages);
+
+</script>
+</body>
+</html>

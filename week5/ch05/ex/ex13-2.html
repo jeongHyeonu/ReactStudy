@@ -9,11 +9,11 @@
 <body>
 <h1>Transforming Data</h1>
 <p>Open the Console</p>
-<script type="text/babel">
+<script type="module">
 
 /**
- * ch03/ex/ex13-1.html
- * ref: ch03/06/02-data.html
+ * ch03/ex/ex13-2.html
+ * ref: ch03/06/03-data.html
  */
 
 const address = [
@@ -30,10 +30,10 @@ const address = [
 
 console.log(address);
 
-// 실습 13-1: address의 요소 중 첫 글자가 S 인 요소만 출력
+// 실습 13-2: address의 요소 중 첫 글자가 'S'가 아닌 요소만 출력하되, 주어진 기능을 수행하는 함수로 구현
 // Array.filter(callbackFn) : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-const addr = address.filter(el => el[0] === "S");
-console.log(addr);
+const newFilter = ###
+console.log(newFilter(address, 'S'));
 
 console.log(address);
 

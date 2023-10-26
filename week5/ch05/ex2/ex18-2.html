@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>React Elements</title>
+</head>
+<body>
+
+<!-- Target Container -->
+<div id="root"></div>
+
+<!-- React Library & React DOM-->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<script type="module">
+
+/**
+ * ch04/ex/ex18-2.html
+ * ref: ch04/02/01-elements.html
+ */
+
+// create addr element with "h1"
+const addr = React.createElement(
+    "h1", 
+    {id: "address"}, 
+    "Address"
+);
+
+// 실습18-2: root 엘리먼트를 생성하고, addr 객체(엘리먼트)를 렌더링
+// create root & render root at react@18
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(addr);
+
+console.log('root', root);
+console.log('addr', addr);
+
+</script>
+
+</body>
+</html>

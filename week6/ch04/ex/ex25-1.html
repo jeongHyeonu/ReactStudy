@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Class Components</title>
+</head>
+<body>
+
+<!-- Root element -->
+<div id="root"></div>
+
+<!-- React Library & React DOM-->
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+<script type="module">
+
+/**
+ * ch04/ex/ex25-1.html
+ * function components, with parameters, react@16
+ * ref: ch04/03/02-2-components.html
+ */
+
+const address = [
+    "Division of Computer Engineering",
+    "Hansung University",
+    "116",
+    "Samseongyo-ro",
+    "16-gil",
+    "Seongbuk-gu",
+    "Seoul",
+    "02876",
+    "South Korea"
+];
+
+// 실습25-1: 클래스형 컴포넌트 정의
+class Address extends React.Component {
+    ###
+}
+
+// root 엘리먼트에 Address 클래스 컴포넌트를 렌더링 (react@16)
+ReactDOM.render(
+    React.createElement(Address, {address}, null),
+    document.getElementById('root')
+);
+
+console.log('Address:', new Address({address}));
+
+</script>
+
+</body>
+</html>

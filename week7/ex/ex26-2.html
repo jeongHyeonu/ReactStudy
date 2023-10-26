@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rendering React Element</title>
+</head>
+<body>
+
+<!-- Root element -->
+<div id="root"></div>
+
+<!-- React Library & React DOM-->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script type="module">
+
+/**
+ * ch05/ex/ex26-2.html from ch05/01/01-jsx.html
+ * create an element with "h1" and getUser() function
+ */
+
+const user = {
+    firstname: "Seunghyun",
+    lastname: "Park"
+}
+
+const getUser = user => `${user.lastname}, ${user.firstname}`;
+
+const element = React.createElement(
+    "h1", 
+    null, 
+    "Hello, ", getUser(user), "!"
+);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(element);
+
+</script>
+
+</body>
+</html>

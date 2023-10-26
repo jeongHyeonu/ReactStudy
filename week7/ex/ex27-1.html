@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>React Element using Array and JSX</title>
+</head>
+<body>
+
+<!-- Root element -->
+<div id="root"></div>
+
+<!-- React Library & React DOM-->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+/**
+ * ch05/ex/ex27-1.html from ch05/01/03-jsx.html
+ * 데이터 (배열)을 사용한 리액트 엘리먼트 구성 및 렌더링
+ */
+
+const data = [
+    "web",
+    "mobile software",
+    "bigdata",
+    "ditital contents"
+]
+
+const majors = (
+    <ul>
+        <li>{data[0]}</li>
+        <li>{data[1]}</li>
+        <li>{data[2]}</li>
+        <li>{data[3]}</li>
+    </ul>
+);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(majors);
+
+</script>
+
+</body>
+</html>

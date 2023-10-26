@@ -9,11 +9,11 @@
 <body>
 <h1>Transforming Data</h1>
 <p>Open the Console</p>
-<script type="text/babel">
+<script type="module">
 
 /**
- * ch03/ex/ex13-1.html
- * ref: ch03/06/02-data.html
+ * ch03/ex/ex12.html
+ * ref: ch03/06/01-data.html
  */
 
 const address = [
@@ -30,10 +30,9 @@ const address = [
 
 console.log(address);
 
-// 실습 13-1: address의 요소 중 첫 글자가 S 인 요소만 출력
-// Array.filter(callbackFn) : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-const addr = address.filter(el => el[0] === "S");
-console.log(addr);
+// 실습12: address의 모든 요소를 ','으로 연결하여 하나의 문자열로 출력
+// Array.join([saparator]) : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+console.log(###);
 
 console.log(address);
 

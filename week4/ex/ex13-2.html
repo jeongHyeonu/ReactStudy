@@ -32,7 +32,7 @@ console.log(address);
 
 // 실습 13-2: address의 요소 중 첫 글자가 S 가 아닌 요소만 출력하되, 주어진 기능을 수행하는 함수로 구현
 // Array.filter(callbackFn) : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-const newFilter = ###
+const newFilter = (list, cond) => list.filter(el => el[0] !== cond);
 console.log(newFilter(address, 'S'));
 
 console.log(address);

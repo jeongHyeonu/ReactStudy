@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>React Component using Object and JSX</title>
+</head>
+<body>
+
+<!-- Root element -->
+<div id="root"></div>
+
+<!-- React Library & React DOM-->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+/**
+ * ch05/ex/ex29-5.html
+ * 데이터 확장(1) - 리액트 컴포넌트, 매개변수 포함
+ */
+
+const data = {
+    name: "Hansung University",
+    locations: {
+        country: "Korea",
+        city: "Seoul",
+        address: "116 Samseongyo-ro"
+    },
+    majors: [
+        "Web",
+        "Mobile SW",
+        "Bigdata",
+        "Digital contents"
+    ]
+};
+
+// Place() component with parameter
+// code here
+(
+    <section id={name.toLowerCase().replace(/ /g, "-")}>
+        <h2>{// show name from parameter, code here
+            }</h2>
+        <h3>Locations</h3>
+        <ul className="locations">
+            {// show locations from parameter
+             // code here
+            }
+        </ul>
+        <h3>Majors</h3>
+        <ul className="majors">            
+            {// show majors from parameter
+             // code here
+            }
+        </ul>
+    </section>
+);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Place name={data.name} locations={data.locations} majors={data.majors} />);
+
+</script>
+
+</body>
+</html>

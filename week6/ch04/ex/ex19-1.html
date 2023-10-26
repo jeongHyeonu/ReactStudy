@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>React.createElement()</title>
+</head>
+<body>
+
+<!-- 타겟 컨테이너 -->
+<div id="root"></div>
+
+<!-- React Library & React DOM-->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<script type="module">
+
+/**
+ * ch04/ex/ex19-1.html
+ * react@18, multiple elements in String
+ * ref: ch04/02/03-elements.html
+ */
+
+/*
+[
+    "Division of Computer Engineering",
+    "Hansung University",
+    "116",
+    "Samseongyo-ro",
+    "16-gil",
+    "Seongbuk-gu",
+    "Seoul",
+    "02876",
+    "South Korea"
+];
+*/
+
+// 실습19-1: 리액트 엘리먼트 생성 - 문자열 활용
+const addr = React.createElement(
+    "section", 
+    {id: "address"},
+    React.createElement(###)
+);
+
+// create root & render root at react@18
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(addr);
+
+console.log('addr:', addr);
+
+</script>
+
+</body>
+</html>
