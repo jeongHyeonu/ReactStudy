@@ -1,0 +1,20 @@
+/* MyPage.scss */
+.my-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    pre {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      max-width: 400px;
+    }
+  }

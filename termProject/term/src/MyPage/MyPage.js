@@ -1,7 +1,99 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import styled from 'styled-components';
 
+import MyPagePosts from './MyPagePosts';
+import MyPageComments from './MyPageComments';
+import MyPageFriends from './MyPageFriends';
+
+const MyPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  pre {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+  }
+`;
+
+const MyPageHeader = styled.div`
+  margin-bottom: 44px;
+  
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  position: relative;
+  border-bottom-width: 1px;
+
+  div {
+    margin-right: 44px;
+    flex-grow: 1;
+    flex-basis: 0;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    flex-shrink: 0;
+    
+    button {
+      border: 0;
+      cursor: pointer;
+      height: 150px;
+      padding: 0;
+      width: 150px;
+    }
+    .clip-path {
+      clip-path: circle(50%);
+    }
+  }
+
+  section {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+  }
+`;
+const MyPageContents = styled.div`
+  width:800px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  border-bottom-width: 1px;
+  box-sizing: border-box;
+  justify-content: center;
+  text-align: center;
+
+  border-top-width: 1px;
+  border-top-color: #A0A0C8;
+  border-top-style: solid;
+  button{
+    width:100px;
+    padding:10px;
+  }
+
+  .selected{
+    border-top-width: 2px;
+    border-top-color: #000fff;
+    border-bottom:0px;
+    border-left:0px;
+    border-right:0px;
+    background-color: white;
+    font-size:20px;
+  }
+`;
 function MyPage() {
   // useParams 훅을 사용하여 URL에서 유저 이름을 추출
   const { user } = useParams();
@@ -9,8 +101,28 @@ function MyPage() {
   // 유저 정보
   const [userData, setUserData] = useState(null);
 
+  // 유저 이미지
+  const [buttonImage, setButtonImage] = useState(null);
+  
+  // 게시물, 댓글, 스토리 몇 번째 인덱스인지 저장
+  const [selecteIndex, setSelectedIndex] = useState(0);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // 이미지 파일을 미리보기로 표시하기 위해 URL.createObjectURL 사용
+      const imageUrl = URL.createObjectURL(file);
+      setButtonImage(imageUrl);
+    }
+  };
+
+  // 파일 선택 input 엘리먼트를 참조하기 위한 함수
+  const openFileInput = () => {
+    document.getElementById('fileInput').click();
+  };
+
   useEffect(() => {
-    // 로컬 JSON 파일 경로를 적절하게 수정
+    // JSON 파일 읽어오기
     axios.get(`/users/${user}.json`)
       .then((response) => {
         setUserData(response.data);
@@ -18,6 +130,8 @@ function MyPage() {
       .catch((error) => {
         console.error('데이터를 가져오는 중 오류 발생:', error);
       });
+    // 유저 이미지 읽어오기
+    // 음..
   }, [user]);
 
   if (!userData) {
@@ -26,11 +140,45 @@ function MyPage() {
 
   console.log(user);
   return <>
-    <h2>마이페이지 - 유저: {user}</h2>
-    <hr/>
-    이름 : {userData.name} <br/>
-    학과 학년 : {userData.grade} <br/>
-    소개글 : {userData.introduce}
+    <MyPageContainer>
+      <MyPageHeader>
+        <div >
+          <input
+            id="fileInput"
+            type="file"
+            accept="image/*"
+            style = {{display:'none', }}
+            onChange={handleFileChange}
+          />
+        <button
+          onClick={openFileInput}
+          class="clip-path"
+          style={{ backgroundImage: `url(${buttonImage})` }}>
+          {(buttonImage)?"" : "이미지 업로드"} 
+        </button>
+        </div>
+        <section>
+        <h2>{user} <button>프로필 편집</button> <button>친구 추가</button>
+        </h2>
+      <hr/>
+      이름 : {userData.name} <br/>
+      학과 학년 : {userData.grade} <br/>
+      소개글 : {userData.introduce} <br/>
+      이메일 : {userData.email}
+        </section>
+      </MyPageHeader>
+      <MyPageContents>
+        <button onClick={()=>setSelectedIndex(0)} className={selecteIndex==0 ? "selected" : ""}>게시물</button>
+        <button onClick={()=>setSelectedIndex(1)} className={selecteIndex==1 ? "selected" : ""}>댓글</button>
+        <button onClick={()=>setSelectedIndex(2)} className={selecteIndex==2 ? "selected" : ""}>친구</button>
+
+      </MyPageContents>
+      <br/>
+        
+        {(selecteIndex==0) ? <MyPagePosts/> : <></>}
+        {(selecteIndex==1) ? <MyPageComments/> : <></>}
+        {(selecteIndex==2) ? <MyPageFriends/> : <></>}
+    </MyPageContainer>
   </>
 }
 

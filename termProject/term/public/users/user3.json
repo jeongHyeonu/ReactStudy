@@ -3,5 +3,6 @@
     "password": "c",
     "name": "유저3",
     "grade": "컴퓨터공학과 3학년",
-    "introduce": "대충소개글3"
+    "introduce": "대충소개글3",
+    "email": "user3@hansung.edu"
 }
