@@ -1,100 +1,7 @@
 import styled from 'styled-components';
 import MyPagePostsModal from './MyPagePostsModal/MyPagePostsModal';
 import React, { useEffect, useMemo, useState } from 'react';
-
-let userPostsInfo = [
-  {
-    likeCount:30,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다 교수님 종강주세오",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다 교수님 종강주세오",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-    
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-  {
-    likeCount:9,
-    scrapCount:2,
-    comments:["댓글1","댓글2","댓글3"],
-    title:"종강마렵다",
-    description:"대충 게시글 내용",
-    image:"/images/image1.png",
-    date:"2023-11-05 오후 3:00"
-  },
-]
+import { useSelector } from 'react-redux';
 
 let width = 150;
 let margin = 20;
@@ -160,13 +67,16 @@ const MyPagePosts = ({user,userImage}) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("?");
   }
+
+  const userPostsInfo = useSelector((state) => state.user.userPosts);
+  console.log(userPostsInfo)
+  if(!userPostsInfo) return;
 
   const renderModal = () => {
     if(modal==true)
     return <ModalContainer onClick={()=>setModal(false)}>
-      <MyPagePostsModal user={user} props={userPostsInfo.at(hover)} userImage={userImage} hover={hover}/>
+      <MyPagePostsModal user={user} props={userPostsInfo.at(hover)} userImage={userImage} setModal={setModal}/>
     </ModalContainer>
   }
 

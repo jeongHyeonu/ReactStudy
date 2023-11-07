@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -7,6 +8,10 @@ import MyPagePosts from './MyPagePosts';
 import MyPageComments from './MyPageComments';
 import MyPageFriends from './MyPageFriends';
 import Button from 'react-bootstrap/Button';
+
+
+import {setUser} from '../app/actions'
+
 
 const MyPageContainer = styled.div`
   display: flex;
@@ -108,12 +113,17 @@ function MyPage() {
   // 게시물, 댓글, 스토리 몇 번째 인덱스인지 저장
   const [selecteIndex, setSelectedIndex] = useState(0);
 
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.user);
+
+  
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       // 이미지 파일을 미리보기로 표시하기 위해 URL.createObjectURL 사용
       const imageUrl = URL.createObjectURL(file);
       setButtonImage(imageUrl);
+      
     }
   };
 
@@ -127,6 +137,10 @@ function MyPage() {
     axios.get(`/users/${user}.json`)
       .then((response) => {
         setUserData(response.data);
+
+        // 유저 데이터를 설정하고 스토어에 디스패치
+        const userData = response.data;
+        dispatch(setUser(userData));
       })
       .catch((error) => {
         console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -138,6 +152,7 @@ function MyPage() {
   if (!userData) {
     return <div>데이터를 로딩 중입니다...</div>;
   }
+  if(!data) return;
 
   console.log(user);
   return <>
