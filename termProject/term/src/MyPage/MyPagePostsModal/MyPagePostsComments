@@ -1,0 +1,13 @@
+const MyPagePostsComments = ({comments}) => {
+  return <>
+        {comments.map((v,i)=>{
+            <div>
+                {v}
+            </div>
+        })
+    }
+  </>
+
+}
+
+export default MyPagePostsComments;

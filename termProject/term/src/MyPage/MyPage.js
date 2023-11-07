@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import MyPagePosts from './MyPagePosts';
 import MyPageComments from './MyPageComments';
 import MyPageFriends from './MyPageFriends';
+import Button from 'react-bootstrap/Button';
 
 const MyPageContainer = styled.div`
   display: flex;
@@ -102,7 +103,7 @@ function MyPage() {
   const [userData, setUserData] = useState(null);
 
   // 유저 이미지
-  const [buttonImage, setButtonImage] = useState(null);
+  const [userImage, setButtonImage] = useState(null);
   
   // 게시물, 댓글, 스토리 몇 번째 인덱스인지 저장
   const [selecteIndex, setSelectedIndex] = useState(0);
@@ -153,12 +154,12 @@ function MyPage() {
         <button
           onClick={openFileInput}
           class="clip-path"
-          style={{ backgroundImage: `url(${buttonImage})` }}>
-          {(buttonImage)?"" : "이미지 업로드"} 
+          style={{ backgroundImage: `url(${userImage})` }}>
+          {(userImage)?"" : "이미지 업로드"} 
         </button>
         </div>
         <section>
-        <h2>{user} <button>프로필 편집</button> <button>친구 추가</button>
+        <h2>{user}   <Button variant="outline-primary">프로필 편집</Button> <Button variant="outline-info">친구 추가</Button>
         </h2>
       <hr/>
       이름 : {userData.name} <br/>
@@ -174,10 +175,9 @@ function MyPage() {
 
       </MyPageContents>
       <br/>
-        
-        {(selecteIndex==0) ? <MyPagePosts/> : <></>}
-        {(selecteIndex==1) ? <MyPageComments/> : <></>}
-        {(selecteIndex==2) ? <MyPageFriends/> : <></>}
+        {(selecteIndex==0) ? <MyPagePosts user={user} userImage={userImage}/> : <></>}
+        {(selecteIndex==1) ? <MyPageComments user={user} userImage={userImage}/> : <></>}
+        {(selecteIndex==2) ? <MyPageFriends user={user} userImage={userImage}/> : <></>}
     </MyPageContainer>
   </>
 }

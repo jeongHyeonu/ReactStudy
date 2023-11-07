@@ -3,7 +3,7 @@
  * ./src/hooks/hooks.js
  */
 
-import { useState } from 'react';
+import { useState,useReducer, useEffect } from 'react';
 
 export const useCounter = capacity => {
   // 관리할 상태 정보: count
@@ -16,6 +16,11 @@ export const useCounter = capacity => {
   // . decCount(): 탑승자 1 감소
   // 반환할 정보와 함수를 array로 반환
   /* code here */
+  
+  useEffect(()=>{
+    setMaxSeat(capacity);
+  },[capacity])
+
   const [maxSeat, setMaxSeat] = useState(capacity);
   const reducer = (state, action) => {
     switch (action.type){
@@ -30,11 +35,9 @@ export const useCounter = capacity => {
   const [count, dispatch] = useReducer(reducer, 0);
   const incCount = () => dispatch({ type: 'INC' });
   const decCount = () => dispatch({ type: 'DEC' });
-
-  const onChangeCapacity = e => setMaxSeat(e.target.value); 
   
-  const isFull = count >= maxSeat;
-  const isEmpty = count == 0;
+  const full = count >= maxSeat;
+  const empty = count == 0;
   
-  return {count, isFull, isEmpty, incCount, decCount}
+  return [count, empty,full, incCount, decCount]
 };

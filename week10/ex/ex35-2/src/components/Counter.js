@@ -13,7 +13,7 @@ const Counter = ({ max }) => {
   const [count, empty, full, increaseCount, decreaseCount] = useCounter(maxSeat);
   
   const onChangeMaxSeat = e => setMaxSeat(e.target.value);
-  
+      
   return (
     <>
       <Door full={full} />

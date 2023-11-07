@@ -9,11 +9,12 @@ import {
 
 // exact 하는 이유? - 홈 페이지와 마이페이지 둘 다 렌더링 되기 때문 
 function App() {
+  console.log("????")
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/mypage/:user" element={<MyPage />} />
+        <Route exact path="/mypage/:user" element={<MyPage />} />
       </Routes>
     </BrowserRouter>
   );
