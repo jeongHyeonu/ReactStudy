@@ -108,7 +108,7 @@ function MyPage() {
   const [userData, setUserData] = useState(null);
 
   // 유저 이미지
-  const [userImage, setButtonImage] = useState(null);
+  const [userImage, setUserImage] = useState(null);
   
   // 게시물, 댓글, 스토리 몇 번째 인덱스인지 저장
   const [selecteIndex, setSelectedIndex] = useState(0);
@@ -122,7 +122,7 @@ function MyPage() {
     if (file) {
       // 이미지 파일을 미리보기로 표시하기 위해 URL.createObjectURL 사용
       const imageUrl = URL.createObjectURL(file);
-      setButtonImage(imageUrl);
+      setUserImage(imageUrl);
       
     }
   };
@@ -141,6 +141,8 @@ function MyPage() {
         // 유저 데이터를 설정하고 스토어에 디스패치
         const userData = response.data;
         dispatch(setUser(userData));
+
+        setUserImage(userData.userImage)
       })
       .catch((error) => {
         console.error('데이터를 가져오는 중 오류 발생:', error);

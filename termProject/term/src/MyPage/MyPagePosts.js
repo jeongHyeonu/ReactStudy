@@ -65,12 +65,18 @@ const MyPagePosts = ({user,userImage}) => {
   const [hover, setHover] = useState(-1);
   const [modal,setModal] = useState(false);
 
+
+  useEffect(()=>{
+    if(modal==false) setHover(-1);
+  },[modal])
+
   const handleClick = (e) => {
     e.preventDefault();
   }
 
+
+  
   const userPostsInfo = useSelector((state) => state.user.userPosts);
-  console.log(userPostsInfo)
   if(!userPostsInfo) return;
 
   const renderModal = () => {
@@ -79,6 +85,8 @@ const MyPagePosts = ({user,userImage}) => {
       <MyPagePostsModal user={user} props={userPostsInfo.at(hover)} userImage={userImage} setModal={setModal}/>
     </ModalContainer>
   }
+
+
 
   const renderSection = (index) => {
     return (
@@ -93,7 +101,7 @@ const MyPagePosts = ({user,userImage}) => {
                 onMouseEnter={() => setHover(i)}
                 onClick={()=>setModal(true)}
                 >
-                  <img src="/images/image1.png" style={{ position:'absolute',width:width, height:width,boxShadow:'0px 0px 2px #000'}} className={`${hover == i ? 'hover' : 'none'}`}/>
+                  <img src={v.image} style={{ position:'absolute',width:width, height:width,boxShadow:'0px 0px 2px #000'}} className={`${hover == i ? 'hover' : 'none'}`}/>
                   {(hover==i)?<div className={`${hover == i ? 'hover' : 'none'}`}>추천 수 : {v.likeCount}<br/>댓글 : {v.comments.length}</div> : <></>}
                 </div>
               ))}
@@ -101,6 +109,7 @@ const MyPagePosts = ({user,userImage}) => {
       </div>
     )
   }
+  
   return (
     <>
       <div style={{margin:'50px'}}>

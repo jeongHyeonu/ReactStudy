@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser, UPDATE_USER,DELETE_USER, deleteUser } from '../../app/actions';
+import MyPagePostsComments from './MyPagePostsComments';
 
 const ModalContents = styled.div`
   width:550px;
@@ -47,6 +48,7 @@ const MyPagePostsModal = ({user,props,userImage,setModal}) => {
 
   const userPostsInfo = useSelector((state) => state.user.userPosts);
   const dispatch = useDispatch();
+    // 유저 상태를 dispatch 한다. 유저가 삭제 버튼 누르면 실행된다.
   const handleDeleteUser = (e) => {
     if(window.confirm("삭제하겠습니까?")){
       const newUserInfo = userPostsInfo.filter((post)=>post != props)
@@ -55,6 +57,7 @@ const MyPagePostsModal = ({user,props,userImage,setModal}) => {
       setModal(false);
     }
   }
+  // 유저 상태를 dispatch 한다. 유저가 수정 버튼 누르면 실행된다.
   const handleUpdateUser = () => {
     const newUserInfo = userPostsInfo.map((post)=>{
       if(post==props){
@@ -65,7 +68,31 @@ const MyPagePostsModal = ({user,props,userImage,setModal}) => {
         };
       } else return post;
     })
-    dispatch(updateUser({action:UPDATE_USER, post:newUserInfo})); // 유저 업데이트 액션 디스패치
+    dispatch(updateUser({action:UPDATE_USER, post:newUserInfo}));
+  }
+  // 유저 상태를 dispatch 한다. 유저가 좋아요 버튼 누르면 실행된다.
+  const likeCountUpdate = () => {
+    const newUserInfo = userPostsInfo.map((post)=>{
+      if(post==props){
+        return {
+          ...post,
+          likeCount:post.likeCount+((like)?1:0)
+        };
+      } else return post;
+    })
+    dispatch(updateUser({action:UPDATE_USER, post:newUserInfo}));
+  }
+  // 유저 상태를 dispatch 한다. 유저가 스크랩 버튼 누르면 실행된다.
+  const scrapCountUpdate = () => {
+    const newUserInfo = userPostsInfo.map((post)=>{
+      if(post==props){
+        return {
+          ...post,
+          scrapCount:post.scrapCount+((scrap)?1:0)
+        };
+      } else return post;
+    })
+    dispatch(updateUser({action:UPDATE_USER, post:newUserInfo}));
   }
   const onChangeTitle = (e)=>{
     setTitle(e.target.value)
@@ -73,6 +100,13 @@ const MyPagePostsModal = ({user,props,userImage,setModal}) => {
   const onChangeDescription = (e)=>{
     setDescription(e.target.value)
   }
+
+  useEffect(()=>{
+    likeCountUpdate();
+  },[like])
+  useEffect(()=>{
+    scrapCountUpdate();
+  },[scrap])
 
   return (
   <ModalContents onClick={handleModalClick}>
@@ -101,16 +135,12 @@ const MyPagePostsModal = ({user,props,userImage,setModal}) => {
       </div>
       <div style={{display:'block', marginBottom:'30px',marginTop:'30px',fontSize:'18px',width:'90%'}}>
         {(editAble) ? <><input value={description} onChange={onChangeDescription}/><br/></> : <p>{props.description}</p>}
-        <Button variant={(like)?"danger":"secondary"} onClick={() => setLike(!like)}>추천 : {(like)?(props.likeCount+1):(props.likeCount)}</Button>{' '}
-        <Button variant={(scrap)?"warning":"secondary"} onClick={() => setScrap(!scrap)}>스크랩 : {(scrap)?(props.scrapCount+1):(props.scrapCount)}</Button>{' '}
+        <Button variant={(like)?"danger":"secondary"} onClick={() => {setLike(!like)}}>추천 : {props.likeCount}</Button>{' '}
+        <Button variant={(scrap)?"warning":"secondary"} onClick={() => {setScrap(!scrap)}}>스크랩 : {props.scrapCount}</Button>{' '}
       </div>
+      <div>댓글 수 : {props.comments.length}</div>
       <hr style={{border:'2px solid', width:'90%'}}/>
-      {props.comments.map((v,i)=>{
-        return <div>
-          {v}
-          <hr/>
-        </div>
-      })}
+      <MyPagePostsComments props={props} setModal={setModal}/>
     </ModalContents>
   )
 }
