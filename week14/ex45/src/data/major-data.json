@@ -1,0 +1,50 @@
+[
+  {
+    "Name": "Mobile Software",
+    "Id": "mjr01",    
+    "Subjects": [
+      "Computer Programming",
+      "Mobile and Smart System",
+      "Android Programming",
+      "Advanced Mobile Programming",
+      "iOS Programming", 
+      "Capstone Design"
+    ]
+  },
+  {
+    "Name": "Web Engineering",
+    "Id": "mjr02",
+    "Subjects": [
+      "Web Programming Basic",
+      "Web Programming",
+      "Web Server Programming",
+      "Web Framework 1",
+      "Web Framework 2", 
+      "Capstone Design"
+    ]
+  },
+  {
+    "Name": "Big Data",
+    "Id": "mjr03",
+    "Subjects": [
+      "Computer Programming",
+      "Big Data Basic",
+      "Data Mining",
+      "Database Design",
+      "Big Data Programming", 
+      "Capstone Design"
+    ]
+  },
+  {
+    "Name": "Digital Contents",
+    "Id": "mjr04",
+    "Subjects": [
+      "Web Programming Basic",
+      "Game Graphic and Animation",
+      "Image Processing",
+      "Virtual Reality",
+      "Digital Contents Planning", 
+      "Capstone Design"
+    ]
+  }
+]
