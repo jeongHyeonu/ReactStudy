@@ -1,0 +1,50 @@
+[
+  {
+    "Category": "Mobile Software",
+    "Code": "M",
+    "Id": "prod0001",
+    "Name": "Mobile application", 
+    "Period": "5 weeks",
+    "Manager": "Randy"
+  },
+  {
+    "Category": "Websites",
+    "Code": "W",
+    "Id": "prod0002",
+    "Name": "Web architecture", 
+    "Period": "5 weeks",
+    "Manager": "Tracey"
+  },
+  {
+    "Category": "Data analysis",
+    "Code": "B",
+    "Id": "prod0003",
+    "Name": "Data analysis libraries", 
+    "Period": "3 weeks",
+    "Manager": "Harris"
+  },
+  {
+    "Category": "Digital contents",
+    "Code": "D",
+    "Id": "prod0004",
+    "Name": "Virtual media packages", 
+    "Period": "3 weeks",
+    "Manager": "Mathew"
+  },
+  {
+    "Category": "Websites",
+    "Code": "W",
+    "Id": "prod0005",
+    "Name": "Web-design", 
+    "Period": "3 weeks",
+    "Manager": "Harris"
+  },
+  {
+    "Category": "Websites",
+    "Code": "W",
+    "Id": "prod0006",
+    "Name": "Web-contents", 
+    "Period": "2 weeks",
+    "Manager": "Mathew"
+  }
+]

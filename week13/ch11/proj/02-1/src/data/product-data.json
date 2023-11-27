@@ -1,0 +1,30 @@
+[
+  {
+    "Category": "Mobile Software",
+    "Id": "prod0001",
+    "Name": "Mobile", 
+    "Period": "5 weeks",
+    "Manager": "Randy"
+  },
+  {
+    "Category": "Websites",
+    "Id": "prod0002",
+    "Name": "Web architecture", 
+    "Period": "5 weeks",
+    "Manager": "Tracey"
+  },
+  {
+    "Category": "Data analysis",
+    "Id": "prod0003",
+    "Name": "Data analysis libraries", 
+    "Period": "3 weeks",
+    "Manager": "Harris"
+  },
+  {
+    "Category": "Digital contents",
+    "Id": "prod0004",
+    "Name": "Virtual media packages", 
+    "Period": "3 weeks",
+    "Manager": "Mathew"
+  }
+]
